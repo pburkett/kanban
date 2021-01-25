@@ -1,0 +1,16 @@
+
+  {
+    "name": "kanban",
+    "version": "1.0.0",
+    "scripts": {
+      "build": "npm run setup:client && npm run setup:server && npm run build:client",
+      "setup:client": "cd kanban.client && npm i",
+      "setup:server": "cd kanban.server && npm i",
+      "build:client": "npm run --prefix kanban.client build",
+      "start": "node kanban.server/index.js"
+    },
+    "engines": {
+      "node": "^14.15.4"
+    }
+  }
+  
