@@ -6,6 +6,7 @@ const Task = new Schema(
     content: { type: String, required: true },
     creatorId: { type: String, ref: 'Account', required: true },
     position: { type: Number, require: true },
+    listId: { type: String, require: true },
     parentId: { type: String, require: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }

@@ -5,7 +5,7 @@
   <main>
     <router-view v-slot="{Component}">
       <transition name="route" mode="out-in">
-        <component :is="Component" />
+        <component v-if="account" :is="Component" />
       </transition>
     </router-view>
   </main>
@@ -23,7 +23,7 @@ export default {
   name: 'App',
   setup() {
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState), account: computed(() => AppState.account)
     }
   }
 }

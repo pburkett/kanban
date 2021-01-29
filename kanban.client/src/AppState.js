@@ -4,7 +4,9 @@ import { reactive } from 'vue'
 export const AppState = reactive({
   // IMPORTANT these names must match the collection names used in the URL!
   user: {},
-  account: {},
+  account: null,
   boards: [],
-  lists: []
+  lists: [],
+  tasks: [],
+  comments: []
 })

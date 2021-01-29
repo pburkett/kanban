@@ -5,6 +5,7 @@ const Comment = new Schema(
   {
     content: { type: String, required: true },
     creatorId: { type: String, ref: 'Account', required: true },
+    taskId: { type: String, required: true },
     parentId: { type: String, require: true }
   },
   { timestamps: true, toJSON: { virtuals: true } }

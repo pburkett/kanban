@@ -1,10 +1,7 @@
 {
   "folders": [
     {
-      "path": "kanban.client"
-    },
-    {
-      "path": "kanban.server"
+      "path": "kanban.server/server/models"
     }
   ],
   "settings": {

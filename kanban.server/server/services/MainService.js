@@ -4,22 +4,22 @@ import { dbContext } from '../db/DbContext'
 
 class MainService {
   async get(collection, query = {}) {
-    const res = await dbContext[collection].find(query)
+    const res = await dbContext[collection].find(query).populate('creator')
     return res
   }
 
   async post(collection, body) {
-    const res = await dbContext[collection].post(body)
+    const res = await dbContext[collection].create(body)
     return res
   }
 
-  async update(collection, id, body) {
-    const res = await dbContext[collection].findOneAndUpdate(id, body, { new: true })
+  async update(collection, query, body) {
+    const res = await dbContext[collection].findOneAndUpdate(query, body, { new: true })
     return res
   }
 
-  async delete(collection, id) {
-    const res = await dbContext[collection].findOneAndRemove(id)
+  async delete(collection, query, id) {
+    const res = await dbContext[collection].findOneAndRemove(query)
     return res
   }
 }
