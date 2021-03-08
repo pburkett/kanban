@@ -33,7 +33,6 @@ class BoardService {
 
     const sortedArr = res.data.sort((a, b) => (a.position > b.position) ? 1 : -1)
 
-    console.log(sortedArr)
     AppState.lists = sortedArr
   }
 
@@ -60,7 +59,6 @@ class BoardService {
   async moveLeftLists(loc, id, startInd, obj, insertInd, swapInd) {
     const res1 = await api.put(loc + '/' + id, obj)
     const res2 = await api.put(loc + '/' + AppState[loc][swapInd].id, { position: startInd - 1 })
-    console.log(res2)
 
     AppState[loc].splice(insertInd, 0, res1.data)
     AppState[loc].splice(startInd - 1, 1, res2.data)

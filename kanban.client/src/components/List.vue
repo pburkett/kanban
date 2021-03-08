@@ -54,7 +54,6 @@ export default {
   setup(props) {
     const state = { newTask: '' }
     onMounted(() => {
-      console.log(AppState.tasks)
     })
     return {
       listLength: computed(() => AppState.lists.length),

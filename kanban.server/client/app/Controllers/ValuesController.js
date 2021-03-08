@@ -4,7 +4,6 @@ import { valuesService } from "../Services/ValuesService.js";
 //Private
 function _draw() {
   let values = ProxyState.values;
-  console.log(values);
 }
 
 //Public

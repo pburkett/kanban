@@ -24,7 +24,6 @@ export class AuthController {
     try {
       await AuthService.loginWithPopup();
     } catch (e) {
-      console.error(e);
     }
   }
 
@@ -32,7 +31,6 @@ export class AuthController {
     try {
       AuthService.logout();
     } catch (e) {
-      console.error(e);
     }
   }
 }
