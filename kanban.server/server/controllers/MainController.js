@@ -39,7 +39,7 @@ export class MainController extends BaseController {
       if (req.params.collection0 !== 'boards') {
         const boardParent = await mainService.get('Boards', { _id: req.body.parentId })
         if (boardParent[0].creatorId !== req.userInfo.id) {
-          // UnAuthorized()
+          UnAuthorized()
         }
       }
       const targetCollection = req.params.collection0.charAt(0).toUpperCase() + req.params.collection0.slice(1)
