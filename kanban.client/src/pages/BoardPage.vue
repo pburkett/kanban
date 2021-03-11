@@ -14,7 +14,9 @@
       <div class="col">
         <form @submit.prevent="addList">
           <input type="text" v-model="state.newList" />
-          <button class="btn btn-success">Save</button>
+          <button class="btn btn-success">
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -22,47 +24,47 @@
 </template>
 
 <script>
-import { onMounted, reactive, computed } from "vue";
-import { AppState } from "../AppState";
-import { useRoute } from "vue-router";
-import { boardService } from "../services/BoardService";
-import list from "../components/List";
+import { onMounted, reactive, computed } from 'vue'
+import { AppState } from '../AppState'
+import { useRoute } from 'vue-router'
+import { boardService } from '../services/BoardService'
+import list from '../components/List'
 export default {
-  name: "Board",
+  name: 'Board',
   setup() {
-    const route = useRoute();
+    const route = useRoute()
     const state = reactive({
-      newList: "",
-      loaded: false,
-    });
-    onMounted(async () => {
+      newList: '',
+      loaded: false
+    })
+    onMounted(async() => {
       try {
-        const id = route.params.id;
-        await boardService.get("boards", id);
-        await boardService.getLists("boards", id, "lists");
-        await boardService.get("boards", id, "tasks");
-        await boardService.get("boards", id, "comments");
-        state.loaded = true;
+        const id = route.params.id
+        await boardService.get('boards', id)
+        await boardService.getLists('boards', id, 'lists')
+        await boardService.get('boards', id, 'tasks')
+        await boardService.get('boards', id, 'comments')
+        state.loaded = true
       } catch (e) {}
-    });
+    })
     return {
-      b: computed(() => (AppState.boards ? AppState.boards[0] : "")),
-      lists: computed(() => (AppState.lists ? AppState.lists : "")),
+      b: computed(() => (AppState.boards ? AppState.boards[0] : '')),
+      lists: computed(() => (AppState.lists ? AppState.lists : '')),
       state,
       route: useRoute(),
       async addList() {
         try {
-          boardService.add("lists", {
+          boardService.add('lists', {
             title: state.newList,
             position: this.lists.length,
-            parentId: this.b.id,
-          });
+            parentId: this.b.id
+          })
         } catch (error) {}
-      },
-    };
+      }
+    }
   },
-  components: { list },
-};
+  components: { list }
+}
 </script>
 
 <style lang="scss" scoped>
